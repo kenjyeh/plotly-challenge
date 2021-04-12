@@ -40,11 +40,12 @@ demo_info.append("h5").text(`wfreq: ${demo_data[0].wfreq}`);
 var filteredData= data.samples.filter(id => id.id === userInput)
 console.log(filteredData)
 
+
+//x values,marker colors
 var filteredID = filteredData.map(id=>id.otu_ids)
 console.log(filteredID)
 
-//Getting sample values
-
+//y values,marker size
 var filteredSample = filteredData.map(sample=>sample.sample_values)
 console.log(filteredSample)
 
@@ -76,7 +77,7 @@ var layout = {
         l:100,
         r:100,
         t:100,
-        b:100
+        b:30
     }
 }
 
@@ -92,7 +93,7 @@ var trace2 = {
     mode: 'markers',
     marker: {
       size: slicedSample,
-      color: ['rgb(128, 0, 0)', 'rgb(245, 130, 48)',  'rgb(250, 190, 212)', 'rgb(210, 245, 60)','rgb(170, 255, 195)', 'rgb(70, 240, 240)',  'rgb(0, 130, 200)', 'rgb(145, 30, 180)', 'rgb(128, 128, 128)']
+      color: slicedID
     }
   };
   
