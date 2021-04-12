@@ -1,11 +1,13 @@
+//create container for dropdown selection
 var dropdown = d3.select("#selDataset");
 
+//call on getData when selDataset changes
 d3.selectAll("#selDataset").on("change", getData )
 
 
 //create getData function to call on 
 function getData(){
-//load json file and console log to check
+//load json file 
 d3.json("samples.json").then((data)=> {
      console.log(data)
 
@@ -25,6 +27,7 @@ var userInput = dropdownMenu.property("value");
 var demo_data=data.metadata.filter(meta=>meta.id.toString() === userInput)
 console.log(demo_data)
 //Creating demo_info
+//add to div sample-metadata
 var demo_info = d3.select("#sample-metadata")
 demo_info.html("")
 demo_info.append("h5").text(`ID: ${userInput}`)
@@ -36,7 +39,7 @@ demo_info.append("h5").text(`Belly Button Type:${demo_data[0].bbtype}`);
 demo_info.append("h5").text(`wfreq: ${demo_data[0].wfreq}`);
 
 
-//set filtered data dn filtered ID 
+//set filtered data to filtered ID 
 var filteredData= data.samples.filter(id => id.id === userInput)
 console.log(filteredData)
 
@@ -49,7 +52,7 @@ console.log(filteredID)
 var filteredSample = filteredData.map(sample=>sample.sample_values)
 console.log(filteredSample)
 
-// creating TOp 10 OTU Id's
+// creating Top 10 OTU Id's
 var slicedID = filteredID[0].slice(0,10).reverse()
 var labels = slicedID.map(d=>"OTU " + d)
 console.log(labels)
